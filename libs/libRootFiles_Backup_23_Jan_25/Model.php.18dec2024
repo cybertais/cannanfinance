@@ -1,0 +1,56 @@
+<?php
+   class Model{
+        function __construct(){
+            $this->db = new Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
+        }
+
+        function formatingdate($string = ''){
+            $dateString = $string;
+
+            // Create a DateTime object from the string
+            $date = new DateTime($dateString);
+            
+            // Format the date to "2nd January 2024"
+            $formattedDate = $date->format('jS F Y');
+            
+            return $formattedDate;
+        }
+
+
+
+        // function mstFetch_acquisition($columns = '*', $condition = ''){
+        //     return 'SELECT '.$columns.' FROM (
+            
+            
+            
+        //     '  . $condition;
+        // }
+
+        function masterfetch_allpeople($columns = '*', $condition = ''){
+            return 'SELECT '.$columns.' FROM (
+                        SELECT 
+                            persons.isdispositioner,
+                            persons.personIdPk,
+                            employment.designation,
+                            concat(persons.givenName, " ", persons.surName) as fullname, 
+                            concat(  persons.givenName, " ", persons.surName,"(" , organization.organizationCode , ")") as fullnameandwork,
+                            concat(  persons.givenName, " ", persons.surName,"(" , employment.designation , ")") as fullnamedesignation
+                        FROM persons
+                        INNER JOIN employment ON employment.personIdFk = persons.personIdPk
+                        INNER JOIN organization ON organization.organizationIdPk = employment.organizationIdFk)
+                    as datatable '  . $condition;
+        }
+
+
+        /*
+        $obj - Obj in Array from Database
+        Return Integer
+        */
+        function getCountOfObject($obj){
+            $count=0;
+            foreach($obj as $v){ $count=$count+1; }
+            return $count;
+        }
+    }
+
+?>

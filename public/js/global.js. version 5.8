@@ -1,0 +1,958 @@
+// v5.8 30-Nov-23
+function createElement(el, attributesObjects = [], classesObject = [], req = false) {
+    let elementType = document.createElement(el);
+    attributesObjects.forEach(function (element, key) {
+       if (element.attribute === 'id') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'name') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'text') {
+          elementType.textContent = element.value;
+          elementType.required = req;
+       } else if (element.attribute === 'src') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'width') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'onclick') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'placeholder') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'type') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'aria-label') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'for') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'href') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'onclick') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'min') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'max') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'data-bs-keyboard') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'tabindex') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'data-bs-dismiss') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'data-bs-backdrop') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'file') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'role') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'button') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'value') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'selected') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'data-bs-toggle') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'data-bs-target') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'aria-controls') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'aria-selected') {
+          elementType.setAttribute(element.attribute, element.value);
+       } else if (element.attribute === 'aria-labelledby') {
+          elementType.setAttribute(element.attribute, element.value);
+       }
+    });
+ 
+    classesObject.forEach(function (element, key) {
+       elementType.classList.add(element);
+    });
+    return elementType;
+}
+
+
+// The Function empties all option element and puts only the default option element to display in the select element
+// @param el : string -> name of the select element
+// @param label : string -> Friendly text name of Blank Value Option eg <option>Choose Your Color</option>
+// Return: Void. Returns nothing. It only change the Select element
+function resetChildSel(el, label){
+   $("#"+el).empty();
+   // $("#"+el).append('<option selected="true" value="">'+label+'</option>');
+   // $("#"+el).prop('selectedIndex', 0);
+   if($("#error"+el).hasClass("inv")){
+       $("#error"+el).remove();
+   }
+}
+ 
+ /** Function Name: bs_get_row
+ 1) Parameter Accept: attributesObjects - Array Default -> []
+ 2) Parameter Accept: classesObject - Array default -> row
+ **/
+ function bs_get_row(attributesObjects = [], classesObject = ['row']) {
+    let row = createElement('div', attributesObjects, classesObject);
+    return row;
+ }
+ 
+ function mpsalescard(bookname, author, booksummary, mailto, idnameattribute, src) {
+    let ca1 = [];
+    let cc1 = ['col-md-2', 'col-sm-2', 'col-xs-2', 'mt-1', 'mb-1'];
+    let comp1 = createElement('div', ca1, cc1);
+    let ca2 = [{
+          'attribute': 'src',
+          'value': src
+       },
+       {
+          'attribute': 'name',
+          'value': 'imageofbooks'
+       },
+       {
+          'attribute': 'width',
+          'value': '100%'
+       },
+       {
+          'attribute': 'alt',
+          'value': bookname
+       },
+    ];
+    let cc2 = ['img', 'img-thumbnail', 'rounded'];
+    let comp2 = createElement('img', ca2, cc2);
+    let ca3 = [{
+       'attribute': 'text',
+       'value': bookname
+    }, ];
+    let cc3 = ['h6', 'h6-responsive', 'mt-2'];
+    let comp3 = createElement('h6', ca3, cc3);
+ 
+    let ca4 = [];
+    let cc4 = ['blockquote-mp'];
+    let comp4 = createElement('blockquote', ca4, cc4);
+ 
+    let ca5 = [{
+       'attribute': 'text',
+       'value': booksummary
+    }];
+    let cc5 = ['readmoreless'];
+    let comp5 = createElement('p', ca5, cc5);
+ 
+    let ca6 = [];
+    let cc6 = ['blockquote-footer', 'mt-1'];
+    let comp6 = createElement('footer', ca6, cc6);
+ 
+    let ca7 = [{
+       'attribute': 'text',
+       'value': 'Author: ' + author
+    }];
+    let cc7 = [];
+    let comp7 = createElement('cite', ca7, cc7);
+ 
+    let ca8 = [{
+          'attribute': 'text',
+          'value': 'Order Now'
+       },
+       {
+          'attribute': 'href',
+          'value': 'mailto:' + mailto + '?subject=Request Order for ' + bookname
+       },
+       {
+          'attribute': 'id',
+          'value': idnameattribute
+       },
+       {
+          'attribute': 'name',
+          'value': idnameattribute
+       },
+    ];
+    let cc8 = ['btn', 'btn-sm', 'btn-mp', ];
+    let comp8 = createElement('a', ca8, cc8);
+    comp4.append(comp5);
+    comp6.append(comp7);
+    comp4.append(comp6);
+    comp1.append(comp2);
+    comp1.append(comp3);
+    comp1.append(comp4);
+    comp1.append(comp8);
+    return comp1;
+ }
+ 
+ function slider() {
+    let ca1_div3 = [{
+       "style": "background-image: url(https://images.hdqwalls.com/wallpapers/hulk-marvel-superhero-cs.jpg);"
+    }];
+    let cc1_div3 = ['carousel-cell'];
+    let comp1_div3 = createElement('div', ca1_div3, cc1_div3);
+ 
+    let ca1_div2 = [];
+    let cc1_div2 = ['overlay'];
+    let comp1_div2 = createElement('div', ca1_div2, cc1_div2);
+ 
+    let ca1_div = [];
+    let cc1_div = ['inner'];
+    let comp1_div = createElement('div', ca1_div, cc1_div);
+ 
+    let ca1_h3 = [];
+    let cc1_h3 = ['subtitle'];
+    let comp1_h3 = createElement('h3', ca1_h3, cc1_h3);
+ 
+    let ca1_h2 = [];
+    let cc1_h2 = ['title'];
+    let comp1_h2 = createElement('h2', ca1_h2, cc1_h2);
+ 
+    let ca1_a = [{
+       'href': '#'
+    }];
+    let cc1_a = ['btn'];
+    let comp1_a = createElement('a', ca1_a, cc1_a);
+ 
+    let slide = document.getElementById('s');
+ 
+    comp1_div.append(comp1_h3, comp1_h2, comp1_a);
+    cc1_div3.append(comp1_div2, comp1_div);
+    alert(200);
+    slide.append(cc1_div3);
+ }
+ 
+ /** Function Name: bs_modal
+ 1) Parameter Accept: id - 
+ 2) Parameter Accept: modalid - 
+ 3) Parameter Accept: sub - Title of the Modal that appears on the very top
+ 
+ **/
+ function bs_modal(id, modalid, sub = '') {
+    let a1ca = [{
+          'attribute': 'id',
+          'value': modalid
+       },
+       {
+          'attribute': 'data-bs-backdrop',
+          'value': 'static'
+       },
+       {
+          'attribute': 'data-bs-keyboard',
+          'value': 'false'
+       },
+       {
+          'attribute': 'tabindex',
+          'value': '-1'
+       },
+    ];
+    let a1cc = ['modal', 'fade'];
+    let a1comp = createElement('div', a1ca, a1cc);
+ 
+    let b1ca = [];
+    let b1cc = ['modal-dialog', 'modal-xl'];
+    let b1comp = createElement('div', b1ca, b1cc);
+ 
+    let c1ca = [];
+    let c1cc = ['modal-content'];
+    let c1comp = createElement('div', c1ca, c1cc);
+ 
+    let d1ca = [];
+    let d1cc = ['modal-header'];
+    let d1comp = createElement('div', d1ca, d1cc);
+ 
+    let d2ca = [];
+    let d2cc = ['modal-body'];
+    let d2comp = createElement('div', d2ca, d2cc);
+ 
+    let e1ca = [{
+          'attribute': 'id',
+          'value': 'modalheader'
+       },
+       {
+          'attribute': 'text',
+          'value': sub
+       }
+    ];
+    let e1cc = ['modal-title'];
+    let subject = createElement('h5', e1ca, e1cc);
+ 
+    let e2ca = [{
+          'attribute': 'type',
+          'value': 'modal'
+       },
+       {
+          'attribute': 'data-bs-dismiss',
+          'value': 'modal'
+       },
+       {
+          'attribute': 'aria-label',
+          'value': 'Close'
+       },
+    ];
+    let e2cc = ['btn-close'];
+    let e2comp = createElement('button', e2ca, e2cc);
+ 
+    let e3ca = [{
+       'attribute': 'id',
+       'value': 'bs_modal_form_' + modalid
+    }];
+    let e3cc = [];
+    let e3comp = createElement('form', e3ca, e3cc);
+ 
+    let f1ca = [{
+       'attribute': 'id',
+       'value': 'bs_modal_container_' + modalid
+    }];
+    let f1cc = ['container'];
+    let f1comp = createElement('div', f1ca, f1cc);
+ 
+    let g1ca = [{
+       'attribute': 'id',
+       'value': id
+    }, ];
+    let g1cc = ['row'];
+    let rowdiv = createElement('div', g1ca, g1cc);
+ 
+    f1comp.append(rowdiv);
+ 
+    e3comp.append(f1comp);
+ 
+    d1comp.append(subject);
+    d1comp.append(e2comp);
+ 
+    d2comp.append(e3comp);
+ 
+    c1comp.append(d1comp);
+    c1comp.append(d2comp);
+ 
+    b1comp.append(c1comp);
+ 
+    a1comp.append(b1comp);
+ 
+    return a1comp;
+ }
+ 
+ function bs_formcontrol_text_require(idname, textvalue, inputtype, req = false) {
+    let h1ca = [];
+    let h1cc = ['mb-1', 'col-md-3', 'mt-1'];
+    let h1comp = createElement('div', h1ca, h1cc);
+ 
+    let i1ca = [{
+          'attribute': 'for',
+          'value': idname
+       },
+       {
+          'attribute': 'text',
+          'value': textvalue
+       }
+    ];
+    let i1cc = [];
+    let i1comp = createElement('label', i1ca, i1cc);
+ 
+    let i2ca = [{
+          'attribute': 'name',
+          'value': idname
+       },
+       {
+          'attribute': 'type',
+          'value': inputtype
+       },
+       {
+          'attribute': 'text',
+          'value': textvalue
+       },
+       {
+          'attribute': 'id',
+          'value': idname
+       },
+       {
+          'attribute': 'aria-label',
+          'value': idname
+       },
+       {
+          'attribute': 'placeholder',
+          'value': textvalue
+       },
+    ];
+    let i2cc = ['form-control', 'form-control-sm'];
+    let i2comp = createElement('input', i2ca, i2cc, req);
+ 
+    let i3ca = [];
+    let i3cc = ['vali'];
+    let i3comp = createElement('div', i3ca, i3cc);
+ 
+    let j1ca = [{
+       'attribute': 'text',
+       'value': ' *'
+    }, ];
+    let j1cc = ['danger'];
+    let j1comp = createElement('span', j1ca, j1cc);
+ 
+ 
+    i1comp.append(j1comp);
+ 
+    h1comp.append(i1comp);
+    h1comp.append(i2comp);
+    h1comp.append(i3comp);
+ 
+    return h1comp;
+ 
+ }
+ 
+ function bs_formcontrol_text_optional(idname, textvalue, ) {
+    let h1ca = [];
+    let h1cc = ['mb-1', 'col-md-3', 'mt-1'];
+    let h1comp = createElement('div', h1ca, h1cc);
+ 
+    let i1ca = [{
+          'attribute': 'for',
+          'value': 'name_txt_t'
+       },
+       {
+          'attribute': 'text',
+          'value': 'Full Name'
+       }
+    ];
+    let i1cc = [];
+    let i1comp = createElement('label', i1ca, i1cc);
+ 
+    let i2ca = [{
+          'attribute': 'name',
+          'value': 'name_txt_t'
+       },
+       {
+          'attribute': 'text',
+          'value': 'Full Name'
+       },
+       {
+          'attribute': 'id',
+          'value': 'name_txt_t'
+       },
+       {
+          'attribute': 'aria-label',
+          'value': 'name_txt_t'
+       },
+       {
+          'attribute': 'placeholder',
+          'value': 'Full Name'
+       },
+    ];
+    let i2cc = ['form-control', 'form-control-sm'];
+    let i2comp = createElement('input', i2ca, i2cc);
+ 
+    h1comp.append(i1comp);
+    h1comp.append(i2comp);
+ 
+    return h1comp;
+ 
+ }
+ 
+ function bs_formcontrol_number_require(idname, textvalue, min, max) {
+    let h1ca = [];
+    let h1cc = ['mb-1', 'col-md-3', 'mt-1'];
+    let h1comp = createElement('div', h1ca, h1cc);
+ 
+    let i1ca = [{
+          'attribute': 'for',
+          'value': idname
+       },
+       {
+          'attribute': 'text',
+          'value': textvalue
+       }
+    ];
+    let i1cc = [];
+    let i1comp = createElement('label', i1ca, i1cc);
+ 
+    let i2ca = [{
+          'attribute': 'min',
+          'value': min
+       },
+       {
+          'attribute': 'max',
+          'value': max
+       },
+       {
+          'attribute': 'name',
+          'value': idname
+       },
+       {
+          'attribute': 'type',
+          'value': 'number'
+       },
+       {
+          'attribute': 'text',
+          'value': textvalue
+       },
+       {
+          'attribute': 'id',
+          'value': idname
+       },
+       {
+          'attribute': 'aria-label',
+          'value': idname
+       },
+       {
+          'attribute': 'placeholder',
+          'value': textvalue
+       },
+    ];
+    let i2cc = ['form-control', 'form-control-sm'];
+    let i2comp = createElement('input', i2ca, i2cc);
+ 
+    let i3ca = [];
+    let i3cc = ['vali'];
+    let i3comp = createElement('div', i3ca, i3cc);
+ 
+    let j1ca = [{
+       'attribute': 'text',
+       'value': ' *'
+    }, ];
+    let j1cc = ['danger'];
+    let j1comp = createElement('span', j1ca, j1cc);
+ 
+ 
+    i1comp.append(j1comp);
+ 
+    h1comp.append(i1comp);
+    h1comp.append(i2comp);
+    h1comp.append(i3comp);
+ 
+    return h1comp;
+ 
+ }
+ 
+ function bs_formcontrol_number_optional(idname, textvalue, inputtype, min, max) {
+    let h1ca = [];
+    let h1cc = ['mb-1', 'col-md-3', 'mt-1'];
+    let h1comp = createElement('div', h1ca, h1cc);
+ 
+    let i1ca = [{
+          'attribute': 'for',
+          'value': idname
+       },
+       {
+          'attribute': 'text',
+          'value': textvalue
+       }
+    ];
+    let i1cc = [];
+    let i1comp = createElement('label', i1ca, i1cc);
+ 
+    let i2ca = [{
+          'attribute': 'name',
+          'value': idname
+       },
+       {
+          'attribute': 'type',
+          'value': inputtype
+       },
+       {
+          'attribute': 'text',
+          'value': textvalue
+       },
+       {
+          'attribute': 'id',
+          'value': idname
+       },
+       {
+          'attribute': 'aria-label',
+          'value': idname
+       },
+       {
+          'attribute': 'placeholder',
+          'value': textvalue
+       },
+    ];
+    let i2cc = ['form-control', 'form-control-sm'];
+    let i2comp = createElement('input', i2ca, i2cc);
+ 
+    let i3ca = [];
+    let i3cc = ['vali'];
+    let i3comp = createElement('div', i3ca, i3cc);
+ 
+    let j1ca = [{
+       'attribute': 'text',
+       'value': ' *'
+    }, ];
+    let j1cc = ['danger'];
+    let j1comp = createElement('span', j1ca, j1cc);
+ 
+ 
+    i1comp.append(j1comp);
+ 
+    h1comp.append(i1comp);
+    h1comp.append(i2comp);
+    h1comp.append(i3comp);
+ 
+    return h1comp;
+ 
+ }
+ 
+ function bs_button_submit(text, para) {
+    let c1ca = [{
+          'attribute': 'id',
+          'value': para
+       },
+       {
+          'attribute': 'name',
+          'value': para
+       },
+       {
+          'attribute': 'type',
+          'value': 'submit'
+       },
+       {
+          'attribute': 'text',
+          'value': text
+       },
+    ];
+    let c1cc = ['btn', 'btn-sm', 'btn-success'];
+    return c1comp = createElement('input', c1ca, c1cc);
+ }
+ 
+ function bs_groupbutton2(submit_id) {
+    let a1ca = [];
+    let a1cc = ['row'];
+    let a1comp = createElement('div', a1ca, a1cc);
+ 
+    let b1ca = [];
+    let b1cc = ['col-md-12'];
+    let b1comp = createElement('div', b1ca, b1cc);
+ 
+    let b2ca = [];
+    let b2cc = ['mt-5'];
+    let b2comp = createElement('hr', b2ca, b2cc);
+ 
+    let c1ca = [{
+          'attribute': 'role',
+          'value': 'group'
+       },
+       {
+          'attribute': 'aria-label',
+          'value': 'Action Buttons for Request form'
+       },
+    ];
+    let c1cc = ['btn-group-sm', 'btn-group'];
+    let c1comp = createElement('div', c1ca, c1cc);
+ 
+    let d3ca = [{
+          'attribute': 'type',
+          'value': 'submit'
+       },
+       {
+          'attribute': 'name',
+          'value': submit_id
+       },
+       {
+          'attribute': 'id',
+          'value': submit_id
+       },
+       {
+          'attribute': 'text',
+          'value': 'Update'
+       },
+ 
+    ];
+    let d3cc = ['btn', 'btn-success', 'btn-sm'];
+    let d3comp = createElement('button', d3ca, d3cc);
+ 
+    c1comp.append(d3comp);
+    b1comp.append(c1comp);
+    a1comp.append(b2comp);
+    a1comp.append(b1comp);
+ 
+    return a1comp;
+ }
+ 
+ function bs_button(text = '', para = '', buttonType = 'button', classArray = ['btn', 'btn-outline-primary']) {
+    let c1ca = [{
+          'attribute': 'id',
+          'value': para
+       },
+       {
+          'attribute': 'name',
+          'value': para
+       },
+       {
+          'attribute': 'type',
+          'value': buttonType
+       },
+       {
+          'attribute': 'text',
+          'value': text
+       },
+    ];
+    let c1cc = classArray;
+    return c1comp = createElement(buttonType, c1ca, c1cc);
+ }
+ 
+ function bs_groupbutton(text = '', para = '', size = 'col-2') {
+    let c1ca = [{
+          'attribute': 'id',
+          'value': para
+       },
+       {
+          'attribute': 'role',
+          'value': 'group'
+       },
+       {
+          'attribute': 'aria-label',
+          'value': text
+       },
+    ];
+    let c1cc = ['btn-group', size];
+    return c1comp = createElement('div', c1ca, c1cc);
+ }
+ 
+ function bs_button_modal(text, para) {
+    let c1ca = [{
+          'attribute': 'id',
+          'value': para
+       },
+       {
+          'attribute': 'name',
+          'value': para
+       },
+       {
+          'attribute': 'data-bs-toggle',
+          'value': 'modal'
+       },
+       {
+          'attribute': 'data-bs-target',
+          'value': '#' + para
+       },
+       {
+          'attribute': 'role',
+          'value': 'group'
+       },
+       {
+          'attribute': 'aria-label',
+          'value': text
+       },
+       {
+          'attribute': 'text',
+          'value': text
+       },
+    ];
+    let c1cc = ['btn', 'btn-outline-primary'];
+    return createElement('button', c1ca, c1cc);
+ }
+ 
+ // dataobj, Array - Array Object Listing from the Database
+ // keyid, String or int - Key ID Element for the Record
+ // idselelement, string- ID for the Select element
+ // chooseItem, string - ID for the Select element
+ // displayinOption, string - ID for the Select element
+ function buildSelectOptionObjs(dataobj, keyid, keyattribute, idselelement, chooseItem, displayinOption) {
+    let selelement = document.getElementById(idselelement);
+    let elel = $(idselelement);
+    for (var i = 0; i <= dataobj.length; i++) {
+       selelement.remove(0);
+    }
+    selelement.append(createElement('option', [{
+       'attribute': 'text',
+       'value': chooseItem
+    }, {
+       'attribute': 'value',
+       'value': ''
+    }], []));
+    $(dataobj).each(function (i, k) {
+ 
+       let seloptionca = null;
+       if (k[keyattribute] == keyid) {
+          seloptionca = [{
+                'attribute': 'value',
+                'value': k[keyattribute]
+             },
+             {
+                'attribute': 'selected',
+                'value': 'true'
+             },
+             {
+                'attribute': 'text',
+                'value': k[displayinOption]
+             },
+          ];
+       } else {
+          seloptionca = [{
+                'attribute': 'value',
+                'value': k[keyattribute]
+             },
+             {
+                'attribute': 'text',
+                'value': k[displayinOption]
+             },
+          ];
+       }
+       selelement.append(createElement('option', seloptionca, []));
+    });
+ }
+ 
+function buildNewSelectOptions(dataobj, keyattribute, idselelement, chooseItem, displayinOption) {
+   let selelement = document.getElementById(idselelement);
+   selelement.innerHTML = '';
+   if(dataobj.length > 0){
+   selelement.append(createElement('option', [
+         { 'attribute': 'text', 'value': chooseItem },
+         { 'attribute': 'value', 'value': '' },
+         { 'attribute': 'selected', 'value': 'true' },
+      ], []));
+   $(dataobj).each(function (i, k) {
+
+   let seloptionca = null;
+   seloptionca = [{
+   'attribute': 'value',
+   'value': k[keyattribute]
+   },
+   {
+   'attribute': 'text',
+   'value': k[displayinOption]
+   },
+   ];
+   selelement.append(createElement('option', seloptionca, []));
+   });
+   }else{
+   selelement.append(createElement('option', [{
+   'attribute': 'text',
+   'value': chooseItem
+   },
+   {
+   'attribute': 'value',
+   'value': ''
+   },
+   {
+   'attribute': 'selected',
+   'value': 'true'
+   },
+   ], []));
+}
+    
+}
+ 
+ // Return th node
+ // @param l-> Label name of the Column
+ // @param w-> Width of the Column in Percent , eg 10%
+ function td_compile_th(l = 'Column Name', w = '10%;') {
+    let c1ca = [{
+          'attribute': 'width',
+          'value': w
+       },
+       {
+          'attribute': 'text',
+          'value': l
+       },
+    ];
+    let c1cc = [];
+    return c1comp = createElement('th', c1ca, c1cc);
+ }
+ 
+ // return tr node
+ function td_build_tr(ar = []) {
+    let tr = createElement('tr', [], []);
+    ar.forEach(function (element, key) {
+       tr.append(td_compile_th(element.c, element.w));
+    });
+    return tr;
+ }
+ 
+ // return thead node
+ function td_build_thead() {
+    let c1ca = [];
+    let c1cc = [];
+    return c1comp = createElement('thead', c1ca, c1cc);
+ }
+ 
+ // return empty table
+ function td_build_blank_table(id) {
+    let c1ca = [{
+          'attribute': 'id',
+          'value': id
+       },
+       {
+          'attribute': 'name',
+          'value': 'name_' + id
+       },
+    ];
+    let c1cc = ['table', 'table-striped', 'table-hover', 'table-sm'];
+    return c1comp = createElement('table', c1ca, c1cc);
+ }
+ 
+ 
+ /** Function Name: bs_nav_link
+ 1) -> Parameter Accept: para - Array Default -> []
+ 2) -> Parameter Accept: c - Array default -> row
+ 3) -> Parameter Accept: bool - Array default -> row
+ 4) -> Parameter Accept: label - Array default -> row
+ 5) <- Function Returns Node Button Element
+ **/
+ function bs_nav_link(para, c = ['nav-link'], bool = 'false', label = 'Text') {
+    let c1ca = [{
+          'attribute': 'id',
+          'value': 'ct_' + para
+       },
+       {
+          'attribute': 'data-bs-toggle',
+          'value': 'tab'
+       },
+       {
+          'attribute': 'data-bs-target',
+          'value': '#nav-' + para
+       },
+       {
+          'attribute': 'type',
+          'value': 'button'
+       },
+       {
+          'attribute': 'role',
+          'value': 'tab'
+       },
+       {
+          'attribute': 'text',
+          'value': label
+       },
+       {
+          'attribute': 'aria-selected',
+          'value': bool
+       },
+       {
+          'attribute': 'aria-controls',
+          'value': 'nav-' + para
+       },
+    ];
+    let c1cc = c;
+    return c1comp = createElement('button', c1ca, c1cc);
+ }
+ 
+ /** Function Name: bs_nav_link
+ 1) -> Parameter Accept: para - Array Default -> []
+ 2) -> Parameter Accept: c - Array default -> row
+ 3) -> Parameter Accept: bool - Array default -> row
+ 4) -> Parameter Accept: label - Array default -> row
+ 5) <- Function Returns Node Button Element
+ **/
+ function bs_tab_pane(para, c = ['nav-link'], bool = 'false', label = 'Text') {
+    let c1ca = [{
+          'attribute': 'id',
+          'value': 'ct_' + para
+       },
+       {
+          'attribute': 'data-bs-toggle',
+          'value': 'tab'
+       },
+       {
+          'attribute': 'data-bs-target',
+          'value': '#nav-' + para
+       },
+       {
+          'attribute': 'type',
+          'value': 'button'
+       },
+       {
+          'attribute': 'role',
+          'value': 'tab'
+       },
+    ];
+    let c1cc = c;
+    return c1comp = createElement('div', c1ca, c1cc);
+ }
+
+
+ function bs_viewData(label='', data=''){
+   let p = createElement('p', [], ['p1','m1']);
+   let b = createElement('b', [{'attribute':'text','value':label}], ['pr-2']);
+   let span = createElement('span', [], []);
+   let i = createElement('i', [{'attribute':'text','value':data}], ['pl-2']);
+   span.append(i);
+   p.append(b);
+   p.append(span);
+   return p;
+ }

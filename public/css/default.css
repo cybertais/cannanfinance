@@ -1,0 +1,182 @@
+/* Standard Font used globally */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.custom-danger{
+    color:red; 
+    font-size:14px;
+}
+
+.checked p{
+    margin: 0px;
+  }
+
+  table a:hover, a:focus{
+    cursor: pointer;
+    color: #fff;
+  }
+
+#spinner:not([hidden]) {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #spinner::after {
+    content: "";
+    width: 80px;
+    height: 80px;
+    border: 2px solid #ecbb16;
+    border-top: 3px solid #ff0000;
+    border-radius: 100%;
+    will-change: transform;
+    animation: spin 1s infinite linear
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+
+
+
+
+.bg-light-mti{
+    background-color: #ecbb16!important
+}
+
+button > a{
+    color: white;
+    text-decoration:none;
+}
+table.applicantsummarystats tr.altrow td {
+    background-color: #f8f8f8;
+}
+
+table.applicantsummarystats td {
+    padding: 2px 4px;
+    background-color: #fff;
+    font-size: 11px;
+}
+
+table.applicantsummarystats{
+   width: 100%!important;
+}
+
+button > a:hover{
+    color: black;
+}
+
+
+.dot{    height: 15px;  width: 15px;  border-radius: 50%;  display: inline-block;}    
+.dot-red {        background-color: red;    }
+.dot-green {  background-color: green;}
+
+           table tbody td{
+              font-size: 10px !important;
+              letter-spacing: 0px !important;
+          }
+
+          table thead td{
+              font-size: 12px !important;
+              font-weight: bold !important;
+              letter-spacing: 0px !important;
+          }
+/* a, h1,h2,h3,h4,h5,h6,p{
+    text-decoration: none;
+    
+    font-family: "Montserrat", sans-serif;
+}
+a{
+    font-size: 11px;
+} */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .form-label{
+        font-size: 11px;
+        margin:5px 0px 0px 0px;        
+    }
+
+    .dataTables_length label, .dataTables_filter label{
+        font-size:10px !important;
+    }
+
+    table thead{
+        font-size: 10px !important;
+    }
+    table tbody{
+        font-size: 10px !important;
+    }
+
+    table tbody .btn{
+        font-size: 10px !important;
+    }
+
+    .dataTables_filter input{
+        border-radius: 5px;
+        height: 25px;
+        font-size: 12px;
+    }
+
+    .dataTables_info{
+        font-size: 10px !important;
+    }
+    .dataTables_paginate{
+        font-size: 10px !important;
+    }
+    
+   
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .form-label, .form-check-label{
+        font-size: 11px;
+        margin:0px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    td{
+        margin:0 !important; 
+        padding:0.2rem !important;
+    }
+    td{
+        font-size:14px;
+    }
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    td{
+        margin:0 !important; 
+        padding:0.2rem !important;
+    }
+    td{
+        font-size:14px;
+    }
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    td{
+        margin:0 !important; 
+        padding:0.2rem !important;
+    }
+    td{
+        font-size:14px;
+    }
+
+}

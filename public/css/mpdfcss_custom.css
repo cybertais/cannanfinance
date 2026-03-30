@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .box {
+    float: left;
+    width: 100%;
+    padding: 0px;
+  }
+  
+  .box1 {
+    float: left;
+    width: 25%;
+    padding: 0px;
+  }
+  
+  .box2 {
+    float: left;
+    width: 75%;
+    padding: 0px;
+  }
+  
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  
+  }
+
+
+  table td{
+    margin:0 0 10px 0;
+    padding: 0px;
+    font-size: 10px;
+    vertical-align: top;
+  }
+
+  table{
+    margin-left:5px ;
+  }
+
+  .title{
+    margin-left: 5px;
+    text-align: right;
+    font-weight: bold;
+  }
+
+  .letterhead{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 80%;
+  }

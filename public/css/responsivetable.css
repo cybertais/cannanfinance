@@ -1,0 +1,14 @@
+.dataTables_wrapper td{
+    font-size: 0.8rem;
+    letter-spacing: 0.05rem;
+}
+
+.accordion .accordion-button{
+    padding: 10px;
+}
+
+a.current{
+    border-radius:50px!;
+    padding: 5px!;
+
+}
