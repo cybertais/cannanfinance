@@ -10,7 +10,7 @@
     
     .custom-theme-table thead th {
         background-color: var(--cf-dark-blue);
-        color: var(--cf-white) !important;
+        /* color: var(--cf-white) !important; */
         padding: 10px 12px;
         font-size: 0.85rem;
         font-weight: 500;
