@@ -7,7 +7,6 @@ class Agentmanagement_model extends Model
         parent::__construct();
     }
 
-    // Add this to Agentmanagement_model.php
     function fetch_agent_by_id($post)
     {
         $agentid = (int) $post['agentid'];
@@ -27,7 +26,6 @@ class Agentmanagement_model extends Model
         return ['success' => false, 'message' => 'Agent not found.'];
     }
 
-    // Add this to Agentmanagement_model.php
     function edit_agent($post)
     {
         try {
@@ -56,10 +54,6 @@ class Agentmanagement_model extends Model
         }
     }
 
-    // IMPORTANT: Inside your existing masterFetchAgents() method, find the line where you build the Edit Button and REPLACE IT with this:
-    // $sub_array[] = '<button type="button" class="btn cf-btn-edit btn-sm shadow-sm btnEditAgent" data-id="'.$row['agentidpk'].'"> <i class="fas fa-edit me-1"></i> Edit Agent</button>';
-
-    // In agentmanagement_model.php
     function create_agent($post)
     {
         try {
@@ -97,13 +91,33 @@ class Agentmanagement_model extends Model
         }
     }
 
+    // --- NEW METHOD ADDED FOR TOGGLING STATUS ---
+    function toggle_active($post)
+    {
+        try {
+            $agentid = (int) $post['agentid'];
+            $isactive = (int) $post['isactive']; // 1 or 0
+            
+            // Use Database.php wrapper to update the record
+            $result = $this->db->update('agents', ['isactive' => $isactive], "agentidpk = " . $agentid);
+            
+            if ($result) {
+                return ['success' => true, 'message' => 'Agent status updated successfully.'];
+            }
+            return ['success' => false, 'message' => 'Failed to update agent status.'];
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => 'System error: ' . $e->getMessage()];
+        }
+    }
+
     function masterFetchAgents()
     {
+        // Removed: WHERE agents.isactive is true
+        // Now fetches all agents to allow toggling them on and off
         $obj = $this->db->select('
                         SELECT * FROM peoples
                         INNER JOIN agents ON agents.personidfk=peoples.persidpk
                         INNER JOIN provinces ON provinces.provinceId=agents.provinceid
-                        WHERE agents.isactive is true
                         ORDER BY agents.datecreate DESC;
                     ');
 
@@ -112,9 +126,11 @@ class Agentmanagement_model extends Model
         foreach ($obj as $v) {
             $countRow = $countRow + 1;
         }
+        
         foreach ($obj as $row) {
-            $r = json_encode($row);
-            $jsonR = htmlspecialchars(json_encode($r), ENT_QUOTES, 'UTF-8');
+            // FIX: Only encode once, and use htmlspecialchars to escape quotes safely
+            $jsonR = htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8');
+            
             $sub_array = array();
             $sub_array[] = $row['fname'];
             $sub_array[] = $row['lname'];
@@ -122,14 +138,22 @@ class Agentmanagement_model extends Model
             $sub_array[] = $row['email'];
             $sub_array[] = $row['phone'];
             $sub_array[] = $row['pro_name'];
+            
+            // DYNAMIC TOGGLE SWITCH: Check if active, assign unique ID, and add class toggle-active-agent
+            $isChecked = ($row['isactive'] == 1) ? 'checked' : '';
+            $switchId = 'switch_' . $row['agentidpk'];
+            
             $sub_array[] = '<div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                            <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                            <input class="form-check-input toggle-active-agent" type="checkbox" role="switch" 
+                                id="'.$switchId.'" data-id="'.$row['agentidpk'].'" '.$isChecked.' />
+                            <label class="form-check-label" for="'.$switchId.'"></label>
                             </div>';
+            
+            // ADDED: class btnEditAgent and wrapped data-mdb-json in single quotes
             $sub_array[] = '<button 
                                 type="button" 
-                                class="btn btn-warning btn-sm shadow-sm" 
-                                data-mdb-json = '.$jsonR.'
+                                class="btn btn-warning btn-sm shadow-sm btnEditAgent" 
+                                data-mdb-json=\''.$jsonR.'\'
                                 data-mdb-ripple-init
                                 data-mdb-modal-init
                                 data-mdb-target="#editAgentModal"
@@ -138,6 +162,7 @@ class Agentmanagement_model extends Model
                             </button>';
             $data[] = $sub_array;
         } //end foreach loop
+        
         $output = array(
             "draw" => 1,
             "recordsTotal" => $countRow,
@@ -259,5 +284,4 @@ class Agentmanagement_model extends Model
         ]);
     }
 
-    // ... keep your resetpwd method
 }

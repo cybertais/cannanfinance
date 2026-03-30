@@ -7,6 +7,20 @@ class Agentmanagement extends Controller
         $this->view->control = get_class();
     }
 
+    // --- Toggle Agent Status Action ---
+    function toggle_active()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Optional: Protect this action so only Admins can toggle status
+            // Session::init();
+            // $this->requireRole([1]); 
+            
+            $result = $this->model->toggle_active($_POST);
+            echo json_encode($result);
+            exit;
+        }
+    }
+
     // Fetch all agents for the DataTable
     function masterFetchAgents(){
         echo json_encode($this->model->masterFetchAgents($_POST));

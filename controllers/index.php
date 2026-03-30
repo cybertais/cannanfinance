@@ -558,6 +558,13 @@ class Index extends Controller
 
     function index()
     {
+         // 1. Start or resume the existing session
+        Session::init();
+
+        // 2. Wipe all existing session variables (effectively logging the user out)
+        session_unset();
+        session_destroy();
+        
         $this->view->js = array(
             'views/index/js/app.js',
         );

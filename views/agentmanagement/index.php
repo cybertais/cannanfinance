@@ -399,60 +399,53 @@
             });
         });
 
-        // 4. Fetch Agent Details and Open Edit Modal
+        // 4. Load Agent Details from JSON directly and Open Edit Modal
         $('#datatable tbody').on('click', '.btnEditAgent', function() {
-            const agentId = $(this).data('id');
-            
-            // Show loading state on button
-            $(this).html('<i class="fas fa-spinner fa-spin"></i>').prop('disabled', true);
-            
-            $.ajax({
-                url: `${url}/${control}/fetch_agent_by_id`,
-                type: 'POST',
-                data: { agentid: agentId },
-                dataType: 'json',
-                success: function(response) {
-                    if(response.success) {
-                        const data = response.data;
-                        
-                        // Populate Form
-                        $('#edit_agentid').val(data.agentidpk);
-                        $('#edit_fname').val(data.fname);
-                        $('#edit_lname').val(data.lname);
-                        $('#edit_email').val(data.email);
-                        $('#edit_phone').val(data.phone);
-                        $('#edit_agentcode').val(data.agentcode);
-                        
-                        // Handle Checkbox
-                        $('#edit_isactive').prop('checked', data.isactive == 1);
-                        
-                        // Update MDB Inputs so labels float correctly
-                        document.querySelectorAll('#formEditAgent .form-outline').forEach((formOutline) => {
-                            new mdb.Input(formOutline).update();
-                        });
-                        
-                        // Handle MDB Selects
-                        const genderSelect = mdb.Select.getInstance(document.getElementById('edit_gender'));
-                        if(genderSelect) genderSelect.setValue(data.gender);
-                        
-                        const provSelect = mdb.Select.getInstance(document.getElementById('edit_province'));
-                        if(provSelect) provSelect.setValue(data.provinceid);
-
-                        // Show Modal
-                        const editModal = new mdb.Modal(document.getElementById('editAgentModal'));
-                        editModal.show();
-                    } else {
-                        showToast(response.message, 'error');
-                    }
-                },
-                error: function() {
-                    showToast("Failed to fetch agent details.", 'error');
-                },
-                complete: () => {
-                    // Restore button state
-                    $(this).html('<i class="fas fa-edit me-1"></i> Edit Agent').prop('disabled', false);
+            try {
+                // Get the JSON string from the button's data attribute
+                let jsonString = $(this).attr('data-mdb-json');
+                
+                // Parse the JSON
+                let data = JSON.parse(jsonString);
+                
+                // Fallback: If it was double-encoded from old PHP code, parse it again
+                if (typeof data === 'string') {
+                    data = JSON.parse(data);
                 }
-            });
+                
+                // Populate Form Inputs
+                $('#edit_agentid').val(data.agentidpk);
+                $('#edit_fname').val(data.fname);
+                $('#edit_lname').val(data.lname);
+                $('#edit_email').val(data.email);
+                $('#edit_phone').val(data.phone);
+                $('#edit_agentcode').val(data.agentcode);
+                
+                // Handle Checkbox / Switch
+                $('#edit_isactive').prop('checked', data.isactive == 1);
+                
+                // Update MDB Inputs so labels float correctly
+                document.querySelectorAll('#formEditAgent .form-outline').forEach((formOutline) => {
+                    const instance = mdb.Input.getInstance(formOutline);
+                    if (instance) {
+                        instance.update();
+                    } else {
+                        new mdb.Input(formOutline).init();
+                    }
+                });
+                
+                // Handle MDB Selects
+                const genderSelect = mdb.Select.getInstance(document.getElementById('edit_gender'));
+                if(genderSelect) genderSelect.setValue(data.gender);
+                
+                const provSelect = mdb.Select.getInstance(document.getElementById('edit_province'));
+                if(provSelect) provSelect.setValue(data.provinceid);
+
+                // Note: The modal will open automatically due to the data-mdb-target attribute.
+            } catch (e) {
+                console.error("Error parsing agent data: ", e);
+                showToast("Failed to load agent details. Data format error.", 'error');
+            }
         });
 
         // 5. Update Agent Action
@@ -489,6 +482,47 @@
                 },
                 complete: function() {
                     $("#btnUpdateAgent").prop('disabled', false).html('Update Agent');
+                }
+            });
+        });
+
+        // 6. Toggle Agent Status Action directly from the Table
+        $('#datatable tbody').on('change', '.toggle-active-agent', function() {
+            // Get the agent ID stored in data-id attribute
+            const agentId = $(this).data('id');
+            // Determine if checked (1) or unchecked (0)
+            const isActive = $(this).is(':checked') ? 1 : 0;
+            const toggleSwitch = $(this);
+
+            // Temporarily disable the switch to prevent spam clicking
+            toggleSwitch.prop('disabled', true);
+
+            $.ajax({
+                url: `${url}/${control}/toggle_active`,
+                type: "POST",
+                data: {
+                    agentid: agentId,
+                    isactive: isActive
+                },
+                dataType: "json",
+                success: function(response) {
+                    if(response.success) {
+                        showToast(response.message, 'success');
+                    } else {
+                        showToast(response.message, 'error');
+                        // Revert switch visually if backend failed
+                        toggleSwitch.prop('checked', !isActive); 
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error:", error);
+                    showToast("System error occurred while updating status.", 'error');
+                    // Revert switch visually if server error
+                    toggleSwitch.prop('checked', !isActive);
+                },
+                complete: function() {
+                    // Re-enable the switch
+                    toggleSwitch.prop('disabled', false);
                 }
             });
         });

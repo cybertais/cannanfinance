@@ -96,7 +96,7 @@ echo "<script> let control = \"$this->control\"; control = control.toLowerCase()
 
 <body>
     <div id="cf-preloader">
-        <img src="public/images/LogoCF.png" alt="Cannan Finance Loader" class="cf-loader-logo">
+        <img src="<?php echo URL;?>public/images/LogoCF.png" alt="Cannan Finance Loader" class="cf-loader-logo">
     </div>
 
     <a target="_blank" href="https://wa.me/75520000" class="btn text-white btn-floating btn-lg shadow-5" style="background-color: #25d366; position: fixed; bottom: 30px; right: 30px; z-index: 1030;" data-mdb-ripple-init role="button">
