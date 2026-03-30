@@ -1,86 +1,111 @@
 <style>
-    .site-footer {
-        background-color: var(--cf-dark-blue);
-        color: var(--cf-white);
-    }
-    .site-footer a, .site-footer p, .site-footer i, .site-footer span {
-        color: var(--cf-white) !important;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-    .site-footer a:hover {
-        color: var(--cf-light-blue) !important;
-    }
-    .site-footer .social-btn {
-        background-color: rgba(255,255,255,0.1);
-        border-radius: 50%;
-        margin-right: 10px;
-    }
-    .site-footer .social-btn:hover {
-        background-color: var(--cf-light-blue);
-    }
-    .footer-bottom {
-        background-color: rgba(0, 0, 0, 0.2);
-        font-size: 13px;
-    }
-    .footer-bottom a { font-weight: 500; }
+  .site-footer {
+    background-color: var(--cf-dark-blue);
+    color: var(--cf-white);
+  }
+
+  .site-footer a,
+  .site-footer p,
+  .site-footer i,
+  .site-footer span {
+    color: var(--cf-white) !important;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .site-footer a:hover {
+    color: var(--cf-light-blue) !important;
+  }
+
+  .site-footer .social-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .site-footer .social-btn:hover {
+    background-color: var(--cf-light-blue);
+  }
+
+  .footer-bottom {
+    background-color: rgba(0, 0, 0, 0.2);
+    font-size: 13px;
+  }
+
+  .footer-bottom a {
+    font-weight: 500;
+  }
 </style>
 
 <footer class="site-footer text-center text-lg-start pt-4">
-    <div class="container p-4">
-        <div class="row align-items-center mb-4">
-            <div class="col-md-6 d-flex justify-content-center justify-content-md-start mb-3 mb-md-0">
-                <img src="<?php echo URL;?>public/images/LogoCF.png" alt="Cannan Finance" style="height: 50px;">
-            </div>
-            <div class="col-md-6 d-flex justify-content-center justify-content-md-end">
-                <a target="_blank" class="btn text-white social-btn btn-floating" href="<?php echo COMPANY_FBLINK;?>" role="button">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a target="_blank" class="btn text-white social-btn btn-floating" href="https://wa.me/75520000" role="button">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-            </div>
-        </div>
-
-        <hr class="my-4" style="border-color: rgba(255,255,255,0.2);" />
-
-        <div class="row">
-            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                <h6 class="text-uppercase fw-bold mb-3" style="color: var(--cf-light-blue);">Visit Us</h6>
-                <p><i class="fas fa-map-marker-alt me-2"></i> GB Haus, MVIL Road, Port Moresby</p>
-                <p><i class="fas fa-clock me-2"></i> Open Mon-Fri, 8:00AM - 5:00PM</p>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                <h6 class="text-uppercase fw-bold mb-3" style="color: var(--cf-light-blue);">Contact Us</h6>
-                <ul class="list-unstyled mb-0">
-                    <li class="mb-2"><i class="fab fa-whatsapp me-2"></i><a target="_blank" href="https://wa.me/75520000">7552-0000</a></li>
-                    <li class="mb-2"><i class="fa-solid fa-phone me-2"></i><a href="tel:+6753234499">323-4499</a></li>
-                    <li class="mb-2"><i class="fa-solid fa-mobile-screen me-2"></i><a href="tel:+67570922233">7092-2233</a></li>
-                    <li class="mb-2"><i class="fa-solid fa-paper-plane me-2"></i><a href="mailto:enquiries@cannanfinance.com">enquiries@cannanfinance.com</a></li>
-                </ul>
-            </div>
-
-            <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-                <h6 class="text-uppercase fw-bold mb-3" style="color: var(--cf-light-blue);">Postal Address</h6>
-                <p><i class="fas fa-envelope me-2"></i> P.O Box 107, Vision City<br>National Capital District<br>Papua New Guinea</p>
-            </div>
-        </div>
+  <div class="container p-4">
+    <div class="row align-items-center mb-4">
+      <div class="col-md-6 d-flex justify-content-center justify-content-md-start mb-3 mb-md-0">
+        <img src="<?php echo URL; ?>public/images/LogoCF.png" alt="Cannan Finance" style="height: 50px;">
+      </div>
+      <div class="col-md-6 d-flex justify-content-center justify-content-md-end">
+        <a target="_blank" class="btn text-white social-btn btn-floating" href="<?php echo COMPANY_FBLINK; ?>"
+          role="button">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a target="_blank" class="btn text-white social-btn btn-floating" href="https://wa.me/75520000" role="button">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
     </div>
 
-    <div class="footer-bottom p-3">
-        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-            <div class="mb-2 mb-md-0">
-                © <?php echo date("Y"); ?> Copyright: <a href="#"><?php echo COMPANY_LONGNAME?></a>
-            </div>
-            <div class="mb-2 mb-md-0">
-                Last Update: 26 March 2026
-            </div>
-            <div>
-                <a href="mailto:admin@cybertais.com">Website Developed by: <?php echo DEVELOPER_LONGNAME?></a>
-            </div>
-        </div>
+    <hr class="my-4" style="border-color: rgba(255,255,255,0.2);" />
+
+    <div class="row">
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h6 class="text-uppercase fw-bold mb-3" style="color: var(--cf-light-blue);">Visit Us</h6>
+        <p><i class="fas fa-map-marker-alt me-2"></i> GB Haus, MVIL Road, Port Moresby</p>
+        <p><i class="fas fa-clock me-2"></i> Open Mon-Fri, 8:00AM - 5:00PM</p>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h6 class="text-uppercase fw-bold mb-3" style="color: var(--cf-light-blue);">Contact Us</h6>
+        <ul class="list-unstyled mb-0">
+          <li class="mb-2"><i class="fab fa-whatsapp me-2"></i><a target="_blank"
+              href="https://wa.me/75520000">7552-0000</a></li>
+          <li class="mb-2"><i class="fa-solid fa-phone me-2"></i><a href="tel:+6753234499">323-4499</a></li>
+          <li class="mb-2"><i class="fa-solid fa-mobile-screen me-2"></i><a href="tel:+67570922233">7092-2233</a></li>
+          <li class="mb-2"><i class="fa-solid fa-paper-plane me-2"></i><a
+              href="mailto:enquiries@cannanfinance.com">enquiries@cannanfinance.com</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-12 mb-4 mb-md-0">
+        <h6 class="text-uppercase fw-bold mb-3" style="color: var(--cf-light-blue);">Postal Address</h6>
+        <p><i class="fas fa-envelope me-2"></i> P.O Box 107, Vision City<br>National Capital District<br>Papua New
+          Guinea</p>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h6 class="text-uppercase fw-bold mb-3" style="color: var(--cf-light-blue);">Menu Links</h6>
+        <ul class="list-unstyled mb-0">
+<li class="mb-2"><i class="fa-solid fa-file-pdf me-2 text-danger"></i><a href="<?php echo URL;?>downloads">All Applications (PDF)</a></li>
+<li class="mb-2"><i class="fa-solid fa-user-tie me-2 text-primary"></i><a href="<?php echo URL;?>agents">Meet our Agents</a></li>
+<li class="mb-2"><i class="fa-solid fa-user-tie me-2 text-primary"></i><a href="<?php echo URL;?>login">Portal</a></li>
+        </ul>
+      </div>
+
     </div>
+  </div>
+
+  <div class="footer-bottom p-3">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <div class="mb-2 mb-md-0">
+        © <?php echo date("Y"); ?> Copyright: <a href="#"><?php echo COMPANY_LONGNAME ?></a>
+      </div>
+      <div class="mb-2 mb-md-0">
+        Last Update: 31 March 2026
+      </div>
+      <div>
+        <a href="mailto:jonathan@cybertais.com">Website Developed by: <?php echo DEVELOPER_LONGNAME ?></a>
+      </div>
+    </div>
+  </div>
 </footer>
 <!--Footer-->
 </div>
@@ -102,13 +127,13 @@
   <!-- Copyright -->
 
   <!-- Version -->
-  <div class="text-center" style="font-size: 12px; background-color: rgba(0, 0, 0, 0.05);">Last Update: 26 March 2026
+  <div class="text-center" style="font-size: 12px; background-color: rgba(0, 0, 0, 0.05);">Last Update: 31 March 2026
   </div>
   <!-- Version -->
 
   <!-- Developer -->
   <div class="text-center" style="font-size: 12px; background-color: rgba(0, 0, 0, 0.05);">
-    <a href="mailto:admin@cybertais.com">Website Developed by: <?php echo DEVELOPER_LONGNAME ?></a>
+    <a href="mailto:jonathan@cybertais.com">Website Developed by: <?php echo DEVELOPER_LONGNAME ?></a>
   </div>
   <!-- Developer -->
 
