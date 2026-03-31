@@ -20,7 +20,7 @@ class Agents extends Controller{
 
         $route = 'agents/index';
         $this->view->getAllAgents = $this->model->getAllAgents();
-        $this->view->title = "Cannan Finance Agnects";
+        $this->view->title = "Cannan Finance Agents";
 
         $this->view->subjectObj = array(
             'topic'=> COMPANY_INITIAL . ' http://cannanfinance.com/',
