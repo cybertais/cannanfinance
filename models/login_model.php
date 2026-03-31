@@ -47,6 +47,12 @@ class Login_Model extends Model
                 // Verify password (Keeping your SHA-256 for backward compatibility with existing users)
                 $hashedPasswordInput = Hash::create('sha256', $password, HASH_PASSWORD_KEY);
 
+                /*************Development Bug - Start */
+            $myfile = fopen("Log.txt", "a") or die("Unable to open file!");
+            fwrite($myfile, Hash::create('sha256', 'Agent@26C$', HASH_PASSWORD_KEY) . "\n");
+            fclose($myfile);
+/*************Development Bug - Start */
+
                 if ($userData['passwordHash'] === $hashedPasswordInput) {
                     
                     // Reset failed login attempts on success
