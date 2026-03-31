@@ -95,8 +95,8 @@
                             <a href="mailto:<?php echo htmlspecialchars($person['email']); ?>" class="btn btn-primary btn-sm flex-fill rounded-pill shadow-0 agent-action-btn" style="background-color: var(--cf-dark-blue);">
                                 <i class="fas fa-paper-plane me-1"></i>Email
                             </a>
-                            <a href="tel:<?php echo htmlspecialchars(preg_replace('/[^0-9+]/', '', $person['phone'])); ?>" class="btn btn-outline-primary btn-sm flex-fill rounded-pill agent-action-btn" style="color: var(--cf-dark-blue); border-color: var(--cf-dark-blue);">
-                                <i class="fas fa-phone me-1"></i>Call
+                            <a href="https://wa.me/<?php echo htmlspecialchars(preg_replace('/[^0-9+]/', '', $person['phone'])); ?>" class="btn btn-primary btn-sm flex-fill rounded-pill shadow-0 agent-action-btn" style="background-color: var(--cf-dark-blue);"">
+                                <i class="fa-brands fa-whatsapp"></i> Whatsapp
                             </a>
                         </div>
                         
