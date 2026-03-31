@@ -41,7 +41,7 @@
   <div class="container p-4">
     <div class="row align-items-center mb-4">
       <div class="col-md-6 d-flex justify-content-center justify-content-md-start mb-3 mb-md-0">
-        <img src="<?php echo URL; ?>public/images/LogoCF.png" alt="Cannan Finance" style="height: 50px;">
+        <a href="<?php echo URL;?>" target="_blank" rel="noopener noreferrer"><img src="<?php echo URL; ?>public/images/LogoCF.png" alt="Cannan Finance" style="height: 50px;"></a>
       </div>
       <div class="col-md-6 d-flex justify-content-center justify-content-md-end">
         <a target="_blank" class="btn text-white social-btn btn-floating" href="<?php echo COMPANY_FBLINK; ?>"
